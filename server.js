@@ -1,4 +1,4 @@
-ar express = require("express");
+var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
@@ -30,7 +30,7 @@ app.use(express.static("public"));
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
 mongoose.connect("mongodb://localhost/week18Populater", {
-  useMongoClient: true
+  //useMongoClient: true
 });
 
 // Routes
