@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-
+//var ObjectId = mongoose.Types.ObjectId;
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
@@ -77,7 +77,7 @@ app.get("/scrape", function(req, res) {
 app.get("/articles", function(req, res) {
   
   db.Article.find({})
-    .then(function(dbArticle) {
+.then(function(dbArticle) {
     res.json(dbArticle)
   })
   .catch(function(err) {
@@ -90,9 +90,9 @@ app.get("/articles/:id", function(req, res) {
   
   db.Article.findOne({_id: req.params.id}).populate("note")
   .then(function(dbArticle) {
-    res.jsob(dbArticle);
+        res.jsob(dbArticle);
   }).catch(function(err) {
-    res.json(err);
+        res.json(err);
   });
   
 });
@@ -100,7 +100,8 @@ app.get("/articles/:id", function(req, res) {
 // Route for saving/updating an Article's associated Note
 app.post("/articles/:id", function(req, res) {
   
-  db.Note.create(req.body).then(function(dbNote) {
+  db.Note.create(req.body)
+  .then(function(dbNote) {
     return db.Article.findOneAndUpdate({_id: req.params.id}, { note: dbNote._id}, { new: true})
   }).then(function(dbArticle) {
     res.json(dbArticle)    
