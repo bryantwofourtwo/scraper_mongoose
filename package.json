@@ -1,0 +1,12 @@
+{
+  "name": "scraper_mongoose",
+  "version": "1.0.0",
+  "description": "news website scraper using mongoose to store data",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "bf",
+  "license": "ISC"
+}
